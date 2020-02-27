@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}
+Collaborative Workspace Registration Page
+{% endblock %}
+
+{% block content %}
+    {{ super() }}
+    </br>
+    </br>
+    <div class="container text-center">
+        <form method="post">
+            <input placeholder="Class Name" type="text" name="classname">
+            <input placeholder="Class ID" type="text" name="classid">
+
+            {% if role == 'teacher' %}
+            <input type="submit"  name="makeclass" value="Make Classroom" class="btn btn-success">
+            {% else %}
+            <input type="submit"  name="joinclass" value="Join a Classroom" class="btn btn-success">
+            {% endif %}
+        </form>
+    </div>
+
+    <br>
+
+    <div class="container">
+        <center>
+            {% for x in classes %}
+
+                <div class="panel panel-default" style="width:40%">
+                    <div class="panel-heading text-left" >
+                        <h3 class="panel-title ">{{x['classname']}}</h3>
+                    </div>
+                    <div class="panel-body text-left">
+                        <p>
+                            Class ID:{{x['classid']}}
+                        </p>
+                    </div>
+                    {% if role == 'student' %}
+                        <div class="panel-body right">
+                            <p>
+                                <form method="post">
+                                    <input type="text" value="{{x['classid']}}" hidden name="classid" >
+                                    <input type="submit" value="Leave Classroom" name="leave" class="btn btn-success">
+                                </form>
+                            </p>
+                        </div>
+
+                    {% else %}
+                        <div class="panel-body right">
+                            <p>
+                                <form method="post">
+                                    <input type="text" value="{{x['classid']}}" hidden name="classid" >
+                                    <input type="submit" value="Delete Classroom" name="delete" class="btn btn-success">
+                                </form>
+                            </p>
+                        </div>
+                    {% endif %}
+
+                </div>
+                <br>
+            {% endfor %}
+        </center>
+    </div>
+
+{% endblock %}
+

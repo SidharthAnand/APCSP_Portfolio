@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% block content%}
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font: 400 15px/1.8 "Lato", sans-serif;
+            color: #777;
+        }
+
+        .bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4 {
+            position: relative;
+            opacity: 0.65;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .bgimg-1 {
+            background-image: url("../static/images/image1.jpg");
+            min-height: 100%;
+        }
+
+        .bgimg-2 {
+            background-image: url("../static/images/image2.jpg");
+            min-height: 400px;
+        }
+        .bgimg-3 {
+          background-image: url("../static/images/image3.jpg");
+          min-height: 70%;
+        }
+
+        .bgimg-4 {
+          background-image: url("../static/images/image4.jpg");
+          min-height: 100%;
+        }
+
+        .caption {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            text-align: center;
+            color: #000;
+        }
+
+        .caption span.border {
+            background-color: #111;
+            color: #fff;
+            padding: 18px;
+            font-size: 25px;
+            letter-spacing: 10px;
+        }
+
+        h3 {
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font: 20px "Lato", sans-serif;
+            color: #111;
+        }
+
+        /* Turn off parallax scrolling for tablets and phones */
+        @media only screen and (max-device-width: 1024px) {
+        .bgimg-1, .bgimg-2, .bgimg-3 {
+        background-attachment: scroll;
+        }
+        }
+        </style>
+
+        <div class="bgimg-1">
+            <div class="caption">
+                <span class="border">Social Classroom </span>
+            </div>
+        </div>
+
+        <div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
+            <h3 style="text-align:center;">Social Classroom App</h3>
+            <br>
+            <p>Social Classroom is a great resource for teachers and students alike. Gather in one place to share your
+                thoughts and resources with your peers. It is a good way to share information that might be useful to
+                the whole classroom. Share your thoughts with your whole school or even join a classroom for specific
+                interactions between students! For example, a student might share links to website they found that might
+                help with an assignment. Not only is this great for students but also teachers. They get a chance to see
+                what their students are doing but also make their own classroom spaces where they can easily share
+                information to the student population. Sign Up Now!</p>
+        </div>
+
+        <div class="bgimg-2">
+            <div class="caption">
+                <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;">Share Your
+                    Thoughts About Academics!</span>
+            </div>
+        </div>
+
+        <div style="position:relative;">
+            <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+                <p>Make or Join your own Classroom!</p>
+            </div>
+        </div>
+
+    <div class="bgimg-3">
+        <div>
+            <center>
+
+            <br>
+            <br>
+            <br>
+
+                <div class="panel panel-default" style="width:40%">
+
+                    <div class="panel-heading text-left" >
+                        <h3 class="panel-title ">Classroom</h3>
+                    </div>
+
+                    <div class="panel-body text-left">
+                        <p>With all of your classmates and teachers, enjoy the ability to share your thoughts and resources
+                            with each other in a private page dedicated to your class</p>
+                        <p><a class="btn btn-primary btn-lg" href="/register" role="button">Join a Classroom!</a></p>
+                    </div>
+
+                </div>
+            </center>
+        </div>
+    </div>
+
+
+        <div style="position:relative;">
+            <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+                <p>Post your thoughts as much as you want!</p>
+            </div>
+        </div>
+
+        <div class="bgimg-4">
+            <div class="caption">
+                <div class="btn-group btn-group-lg" role="group" aria-label="Close">
+                    <form method="post" action="/register">
+                        <a href="/register"><button type="button" class="btn btn-default btn-lg">Get Started</button></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

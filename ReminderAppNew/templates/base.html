@@ -1,0 +1,53 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}{% endblock %}
+
+{% block styles %}
+    {{super()}}
+    <style>
+        .navbar{
+            margin:0;
+        }
+    </style>
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="/">Classroom Social</a>
+            </div>
+
+            {% if role is defined %}
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a href="/home"><span ></span> Global</a></li>
+                    <li><a href="/manageclass"><span ></span> Manage Classrooms</a></li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Classroom Space<span class="caret"></span></a>
+
+                        <ul class="dropdown-menu">
+                            {% for x in classlist %}
+                                <li><a href="/viewclass/{{x['classid']}}">{{x['classname']}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+                </ul>
+            {% endif %}
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    {% for message in get_flashed_messages()%}
+        <div class="alert alert-warning" >
+            <button type = "button" class="close" data-dismiss="alert">×</button>
+            {{message}}
+        </div>
+    {% endfor %}
+{% endblock %}
+

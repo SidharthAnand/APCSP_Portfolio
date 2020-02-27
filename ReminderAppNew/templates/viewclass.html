@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Main{% endblock %}
+
+{% block scripts %}
+  {{super()}}
+  {{moment.include_moment()}}
+{% endblock %}
+
+{% block navbaritems %}
+    {{super()}}
+{% endblock %}
+
+{% block content %}
+    <div class="jumbotron text-center">
+        <h1>{{classname}}</h1>
+        <h3>{{username}}</h3>
+        </br>
+    </div>
+
+    <div class="container text-center">
+        <form method="post">
+            <div class="input-group">
+                <input name="postentry" type="text" placeholder="Post Something" class="form-control">
+
+                <div class=input-group-btn>
+                    <input type="submit"  name="post" value="Post" class="btn btn-success">
+                </div>
+
+            </div>
+        </form>
+
+        <br>
+    </div>
+
+    <div class="container ">
+        <center>
+            {% for postentry in allpost|reverse %}
+                <div class="panel panel-warning" style="width:40%">
+
+                    <div class="panel-heading text-left" >
+                        <h3 class="panel-title ">{{postentry['username']}} Posted on {{postentry['timestamp']}}</h3>
+
+                    </div>
+                      
+                    <div class="panel-body text-left">
+                        <p>{{postentry['postentry']}}</p>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+        </center>
+    </div>
+    <br>
+
+{% endblock %}
